@@ -1,2 +1,31 @@
 ---
 # handlers file for webserver
+- name: Make sure mariadb unit is running
+  ansible.builtin.systemd:
+    name: httpd
+    state: started
+    enabled: yes
+
+- name: Make sure mariadb unit is running
+  ansible.builtin.systemd:
+    name: firewalld
+    state: started
+    enabled: yes
+
+- name: inserting website index.html file
+  ansible.builtin.template:
+    src: index.html
+    dest: /var/httpd/index.html
+    owner: root
+    group: wheel
+    mode: u=rw,g=r,o=r
+  become: yes
+
+- name: permit traffic in default zone on all relevant ports. Then enable firewalld.
+  ansible.posix.firewalld:
+    port: "{{  item  }}"
+    permanent: yes
+    state: enabled
+  loop:
+      - "80/tcp"
+      - "22/tcp"
