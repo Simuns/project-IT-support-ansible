@@ -1,6 +1,5 @@
 ---
 # tasks file for backup-files
-  become: yes
 - name: byg backup mappe til conf filer
   ansible.builtin.file:
     path: /backup
@@ -13,9 +12,9 @@
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: /backup
-    owner: root
-    group: root
-    mode: '0700'
+#    owner: root
+#    group: root
+#    mode: '0700'
   with_items:
       - /etc/ssh/sshd_config
       - /etc/selinux/selinux.conf
