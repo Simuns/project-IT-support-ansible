@@ -1,6 +1,6 @@
 ---
 # tasks file for backup-files
-
+  become: yes
 - name: byg backup mappe til conf filer
   ansible.builtin.file:
     path: /backup
