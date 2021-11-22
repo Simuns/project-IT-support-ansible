@@ -17,6 +17,8 @@
     - vim
     - bind-utils
     - tree
+    - tcpdump
+    - traceroute
 
 - name: Enable Services (Httpd, Firewalld)
   ansible.builtin.systemd:
