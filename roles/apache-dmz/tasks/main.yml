@@ -6,7 +6,7 @@
     name: '*' 
     state: latest
 
-- name: Installer værktøjer
+- name: Installer services & værktøjer
   yum:
     name: "{{ packages }}"
   vars:
@@ -18,7 +18,7 @@
 
 - name: Enable Services (Httpd, Firewalld)
   ansible.builtin.systemd:
-    state: enabled
+    enabled: yes
     name: "{{ item }}"
   with_items:
     - httpd
@@ -36,7 +36,7 @@
       - Make sure httpd unit is running
 
 
-- name: inserting website index.html file
+- name: inserting webserver config file.
   ansible.builtin.template:
     src: httpd.conf
     dest: /etc/httpd/conf/httpd.conf
