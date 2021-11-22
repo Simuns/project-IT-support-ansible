@@ -5,15 +5,17 @@
   ansible.builtin.file:
     path: /backup
     state: directory
-    owner: root
+    owner: root 
     group: root
-    mode: '0704'
+    mode: '0766'
+  become: yes
   
 - name: Run bash command to copy config files
-  ansible.builtin.command: cp {{ item }} /backup
+  ansible.builtin.command: cp "{{ item }}" /backup
   with_items:
       - /etc/ssh/sshd_config
       - /etc/selinux/semanage.conf
+  become: yes
 
 #- name: Copy file with owner and permissions
 #  ansible.builtin.copy:
