@@ -1,17 +1,18 @@
 Role Name
 =========
 
-A brief description of the role goes here.
-
+This role installs apache on port 80, and setup of DMZ zone on Firewalld
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
-
+1. Required Centos 7
+2. Configuration of network address
+3. Target needs to be accessable from ansible host
 Role Variables
 --------------
 
 A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+
 
 Dependencies
 ------------
@@ -34,5 +35,5 @@ BSD
 
 Author Information
 ------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Name: Símun Højgaard Lutzen
+Email: Simunhojgaard@gmail.com
