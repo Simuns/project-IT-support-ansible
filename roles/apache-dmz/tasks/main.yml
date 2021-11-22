@@ -16,6 +16,7 @@
     - epel-release
     - vim
     - bind-utils
+    - tree
 
 - name: Enable Services (Httpd, Firewalld)
   ansible.builtin.systemd:
@@ -24,6 +25,8 @@
   with_items:
     - httpd
     - firewalld
+  notify:
+      - Make sure {{ item }} unit is running
 
 - name: inserting website index.html file
   ansible.builtin.template:
