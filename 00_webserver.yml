@@ -3,9 +3,7 @@
 
 
   become: yes
-  become_user: root
-  become_method: sudo
-
+  become_method: enable
 
   roles:
 #     - apache-dmz

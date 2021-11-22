@@ -1,9 +1,5 @@
 ---
 # tasks file for backup-files
-  become: yes
-  become_user: root
-  become_method: sudo
-
 - name: byg backup mappe til conf filer
   ansible.builtin.file:
     path: /backup
