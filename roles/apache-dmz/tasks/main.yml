@@ -16,3 +16,24 @@
     - vim
     - bind-utils
 
+- name: inserting website index.html file
+  ansible.builtin.template:
+    src: index.html
+    dest: /var/httpd/index.html
+    owner: root
+    group: wheel
+    mode: u=rw,g=r,o=r
+  become: yes
+  notify: 
+      - Make sure httpd unit is running
+
+- name: permit traffic in default zone on all relevant ports. Then enable firewalld.
+  ansible.posix.firewalld:
+    port: "{{  item  }}"
+    permanent: yes
+    state: enabled
+  loop:
+      - "80/tcp"
+      - "22/tcp"
+  notify: 
+      - Make sure firewalld unit is running
