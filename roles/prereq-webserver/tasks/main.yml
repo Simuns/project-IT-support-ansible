@@ -1,0 +1,25 @@
+---
+# tasks file for backup-files
+
+- name: byg backup mappe til conf filer
+  ansible.builtin.file:
+    path: /backup
+    state: directory
+    owner: root
+    group: root
+    mode: '0700'
+  
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /backup
+    owner: foo
+    group: foo
+    mode: '0644'
+  with_items:
+      - /etc/ssh/sshd_config
+      - /etc/selinux/selinux.conf
+#      - /etc/sysconfig/network-scripts/{{ network_adapter }}
+
+- debug:
+    msg: "{{ ansible_interfaces | difference(['lo',ansible_default_ipv4.alias]) | first }}"
