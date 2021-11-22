@@ -1,2 +1,19 @@
 ---
 # tasks file for webserver
+
+
+- name: Installer seneste udgave af Apache
+  yum:
+    name: httpd
+    state: latest
+
+- name: Installer resurcer
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - httpd
+    - epel-release
+    - vim
+    - bind-utils
+
