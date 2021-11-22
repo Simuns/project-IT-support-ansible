@@ -1,10 +1,9 @@
 ---
 # tasks file for webserver
 
-
-- name: Installer seneste udgave af Apache
-  yum:
-    name: httpd
+- name: upgrade all packages
+  yum: 
+    name: * 
     state: latest
 
 - name: Installer resurcer
