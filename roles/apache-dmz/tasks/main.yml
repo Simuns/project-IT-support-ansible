@@ -19,10 +19,10 @@
 - name: inserting website index.html file
   ansible.builtin.template:
     src: index.html
-    dest: /var/httpd/index.html
+    dest: /var/www/html/index.html
     owner: root
     group: wheel
-    mode: u=rw,g=r,o=r
+    mode: 750
   become: yes
   notify: 
       - Make sure httpd unit is running
