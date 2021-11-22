@@ -17,8 +17,9 @@
 #    mode: '0700'
   with_items:
       - /etc/ssh/sshd_config
-      - /etc/selinux/selinux.conf
+      - /etc/selinux/semanage.conf
 #      - /etc/sysconfig/network-scripts/{{ network_adapter }}
-
+  become: yes
+  
 - debug:
     msg: "{{ ansible_interfaces | difference(['lo',ansible_default_ipv4.alias]) | first }}"

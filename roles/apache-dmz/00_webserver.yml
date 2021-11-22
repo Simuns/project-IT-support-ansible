@@ -1,4 +1,0 @@
-- hosts: servers
-  roles:
-     - apache-dmz
-     - prereq-webserver
