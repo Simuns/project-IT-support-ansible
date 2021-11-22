@@ -13,9 +13,9 @@
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: /backup
-    owner: foo
-    group: foo
-    mode: '0644'
+    owner: root
+    group: root
+    mode: '0700'
   with_items:
       - /etc/ssh/sshd_config
       - /etc/selinux/selinux.conf
