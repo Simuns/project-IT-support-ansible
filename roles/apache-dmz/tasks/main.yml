@@ -22,6 +22,7 @@
 
 - name: Enable Services (Httpd, Firewalld)
   ansible.builtin.systemd:
+    enabled: yes
     name: "{{ item }}"
   with_items:
     - httpd
