@@ -26,6 +26,7 @@
   with_items:
     - httpd
     - firewalld
+  enabled: yes
 
 - name: inserting website index.html file
   ansible.builtin.template:
