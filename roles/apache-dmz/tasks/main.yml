@@ -53,7 +53,7 @@
   ansible.posix.firewalld:
     zone: dmz
     permanent: true
-    immediate: true    
+#    immediate: true    
 #    interface: eth0
     state: enabled
     target: ACCEPT
