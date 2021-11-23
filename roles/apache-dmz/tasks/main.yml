@@ -52,11 +52,9 @@
 - name: Adding dmz zone and activating
   ansible.posix.firewalld:
     zone: dmz
-    permanent: true
-#    immediate: true    
-#    interface: eth0
+    interface: eth0
+    permanent: yes
     state: enabled
-    target: ACCEPT
     
 - name: firewalld rules on relevant ports.
   ansible.posix.firewalld:
