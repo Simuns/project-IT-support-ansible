@@ -1,2 +1,18 @@
 ---
 # tasks file for cisco-backup
+ 
+---
+  tasks:
+   - name: show run 
+   ios_command:
+   commands:
+     - show run 
+     host: "{{ ansible_host }}"
+     username: admin
+     password: Passw0rd
+     register: config
+
+  - name: save output to /mnt/cisco/backup/running-config 
+  copy: 
+  content: "{{ config.stdout[0] }}"
+  dest: "/etc/ansible/backups/show_run_{{ inventory_hostname }}.txt"
