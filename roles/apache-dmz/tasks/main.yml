@@ -54,7 +54,7 @@
     zone: dmz
     permanent: true
     immediate: true    
-    interface: eth0
+#    interface: eth0
     state: enabled
     target: ACCEPT
     
