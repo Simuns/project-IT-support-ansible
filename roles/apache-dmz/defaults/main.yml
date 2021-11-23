@@ -1,5 +1,7 @@
 ---
 # defaults file for webserver
+# Network interface name, Relevant for firewalld configuration
+Interface: eth0
 #Httpd Conf
 ServerRoot: "/etc/httpd"
 ListenPort: 80
