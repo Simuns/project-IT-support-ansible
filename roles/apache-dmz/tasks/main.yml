@@ -49,7 +49,15 @@
   notify: 
       - Make sure httpd unit is running
 
-
+- name: Adding dmz zone and activating
+  ansible.posix.firewalld:
+    zone: dmz
+    permanent: true
+    immediate: true    
+    interface: eth0
+    state: enabled
+    target: accept
+    
 - name: firewalld rules on relevant ports.
   ansible.posix.firewalld:
     service: "{{ item }}"
