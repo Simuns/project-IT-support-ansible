@@ -64,7 +64,7 @@
     zone: dmz
     state: enabled
     permanent: true
-    interface: {{  Interface  }}
+    interface: eth0
   with_items:
     - http
     - ssh
