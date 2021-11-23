@@ -56,7 +56,7 @@
     immediate: true    
     interface: eth0
     state: enabled
-    target: accept
+    target: ACCEPT
     
 - name: firewalld rules on relevant ports.
   ansible.posix.firewalld:
