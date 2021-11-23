@@ -1,2 +1,9 @@
 ---
 # defaults file for webserver
+#Httpd Conf
+ServerRoot: "/etc/httpd"
+ListenPort: 80
+#Website
+Title: Min Linux Apache rod
+BodyHeadder: Dette er siden på min web-root
+Page: Jeg håber at du kan se den
