@@ -16,18 +16,3 @@
       - /etc/ssh/sshd_config
       - /etc/selinux/semanage.conf
   become: yes
-
-#- name: Copy file with owner and permissions
-#  ansible.builtin.copy:
-#    src: "{{ item }}"
-#    dest: /backup
-#    owner: root
-#    group: root
-#    mode: '0700'
-#  with_items:
-#      - /etc/ssh/sshd_config
-#      - /etc/selinux/semanage.conf
-#      - /etc/sysconfig/network-scripts/{{ network_adapter }}
-
-- debug:
-    msg: "{{ ansible_interfaces | difference(['lo',ansible_default_ipv4.alias]) | first }}"

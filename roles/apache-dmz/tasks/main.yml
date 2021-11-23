@@ -22,10 +22,13 @@
 
 - name: Enable Services (Httpd, Firewalld)
   ansible.builtin.systemd:
+    enabled: yes
     name: "{{ item }}"
   with_items:
     - httpd
     - firewalld
+  notify:
+      - Make sure "{{ item }}" unit is running
 
 - name: inserting website index.html file
   ansible.builtin.template:
