@@ -27,15 +27,10 @@
     - httpd
     - firewalld
 
-- name: Make backup of index file.
-  copy:
-    src: /etc/httpd/conf/httpd.conf
-    dest: /backup/
-    owner: root
-    group: wheel
-    mode: '0204'
+- name: Run bash command to copy config files
+  ansible.builtin.command: cp /etc/httpd/conf/httpd.conf /backup/
   become: yes
-
+  
 - name: inserting website index.html file
   ansible.builtin.template:
     src: index.html
