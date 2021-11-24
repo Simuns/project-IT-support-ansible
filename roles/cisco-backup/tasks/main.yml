@@ -1,18 +1,14 @@
 ---
-# tasks file for cisco-backup
- 
----
-  tasks: # we now start to define the actual task that will run
-   - name: show run 
-   ios_command: #this is an ansible module and is some code within the Ansible core that can be used to run commands in ios
-   commands:
-     - show run #what follows here is the command that will be run
-     host: "{{ ansible_host }}" #this defines the connection variables for the ansible host – username / password etc
-     username: admin
-     password: Passw0rd
-     register: config #Once Ansible has connected to the router and run the show run command it registers that information to a variable called config (you can call this what you want)
+- name: show run 
+  ios_command: #this is an ansible module and is some code within the Ansible core that can be used to run commands in ios
+    commands:     - show run #what follows here is the command that will be run
+    - show run #what follows here is the command that will be run
+    host: "{{ ansible_host }}" #this defines the connection variables for the ansible host – username / password etc
+      username: admin
+      password: Passw0rd
+      register: config #Once Ansible has connected to the router and run the show run command it registers that information to a variable called config (you can call this what you want)
 
-  - name: save output to /mnt/cisco/backup/running-config 
+- name: save output to /mnt/cisco/backup/running-config 
   copy: 
-  content: "{{ config.stdout[0] }}" #this registers the config to a format called stdout
-  dest: "/mnt/cisco/backup/running-config/show_run_{{ inventory_hostname }}.txt" #this defines the destination and filename format which will be show_run_hostname.txt
+    content: "{{ config.stdout[0] }}" #this registers the config to a format called stdout
+    dest: "/mnt/cisco/backup/running-config/show_run_{{ inventory_hostname }}.txt" #this defines the destination and filename format which will be show_run_hostname.txt

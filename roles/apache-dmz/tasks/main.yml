@@ -1,24 +1,24 @@
 ---
 # tasks file for webserver
 
-#- name: update alle pakker
-#  yum: 
-#    name: '*' 
-#    state: latest
-#    update_cache: yes
-#
-#- name: Installer services & værktøjer
-#  yum:
-#    name: "{{ packages }}"
-#  vars:
-#    packages:
-#    - httpd
-#    - epel-release
-#    - vim
-#    - bind-utils
-#    - tree
-#    - tcpdump
-#    - traceroute
+- name: update alle pakker
+  yum: 
+    name: '*' 
+    state: latest
+    update_cache: yes
+
+- name: Installer services & værktøjer
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - httpd
+    - epel-release
+    - vim
+    - bind-utils
+    - tree
+    - tcpdump
+    - traceroute
 
 - name: Enable Services (Httpd, Firewalld)
   ansible.builtin.systemd:
@@ -61,10 +61,8 @@
 - name: firewalld rules on relevant ports.
   ansible.posix.firewalld:
     service: "{{ item }}"
-    zone: dmz
     state: enabled
     permanent: true
-    interface: eth0
   with_items:
     - http
     - ssh

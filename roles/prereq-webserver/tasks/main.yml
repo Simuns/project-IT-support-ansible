@@ -15,5 +15,5 @@
   with_items:
       - /etc/ssh/sshd_config
       - /etc/selinux/semanage.conf
-      - /etc/sysconfig/network-scripts/ifcfg-eth0
+      - /etc/sysconfig/network-scripts/ifcfg-eno1
   become: yes
