@@ -7,18 +7,11 @@
     state: latest
     update_cache: yes
 
-- name: Installer services & værktøjer
+- name: Install the latest version of Apache
   yum:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - httpd
-    - epel-release
-    - vim
-    - bind-utils
-    - tree
-    - tcpdump
-    - traceroute
+    name: httpd
+    state: latest
+
 
 - name: Enable Services (Httpd, Firewalld)
   ansible.builtin.systemd:
@@ -30,7 +23,7 @@
 - name: Run bash command to copy config files
   ansible.builtin.command: cp /etc/httpd/conf/httpd.conf /backup/
   become: yes
-  
+
 - name: inserting website index.html file
   ansible.builtin.template:
     src: index.html
