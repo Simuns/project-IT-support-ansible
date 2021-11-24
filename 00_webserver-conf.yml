@@ -5,5 +5,5 @@
   become: yes
 
   roles:
-     - apache-dmz
      - prereq-webserver
+     - apache-dmz
