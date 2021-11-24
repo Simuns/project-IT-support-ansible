@@ -28,7 +28,7 @@
     - firewalld
 
 - name: Make backup of index file.
-  ansible.builtin.copy:
+  copy:
     src: /etc/httpd/conf/httpd.conf
     dest: /backup/
     owner: root
