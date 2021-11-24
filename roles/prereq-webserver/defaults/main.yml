@@ -1,2 +1,6 @@
 ---
 # defaults file for backup-files
+#SSH
+PermitRootLogin: yes
+AllowUsers: admin
+Interface: eno1

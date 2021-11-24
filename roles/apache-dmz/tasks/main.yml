@@ -27,13 +27,22 @@
     - httpd
     - firewalld
 
+- name: Make backup of index file.
+  ansible.builtin.copy:
+    src: /etc/httpd/conf/httpd.conf
+    dest: /backup/
+    owner: root
+    group: wheel
+    mode: '0204'
+  become: yes
+
 - name: inserting website index.html file
   ansible.builtin.template:
     src: index.html
     dest: /var/www/html/index.html
     owner: root
     group: wheel
-    mode: 750
+    mode: 754
   become: yes
   notify: 
       - Make sure httpd unit is running
