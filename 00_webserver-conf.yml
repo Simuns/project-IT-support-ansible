@@ -5,5 +5,5 @@
   become: yes
 
   roles:
-     - prereq-webserver
+     - pre-requirements-centos7 
      - apache-dmz
