@@ -21,7 +21,7 @@
     state: directory
     owner: root 
     group: root
-    mode: '0766'
+    mode: '0700'
   become: yes
   
 - name: Run bash command to copy config files
@@ -31,3 +31,5 @@
       - /etc/selinux/semanage.conf
       - /etc/sysconfig/network-scripts/ifcfg-{{  Interface  }}
   become: yes
+
+

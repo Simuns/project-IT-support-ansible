@@ -1,30 +1,30 @@
 ---
 # tasks file for webserver
 
-- name: update alle pakker
+- name: opdater alle pakker
   yum: 
     name: '*' 
     state: latest
     update_cache: yes
 
-- name: Install the latest version of Apache
+- name: Installer seneste udgave af Apache
   yum:
     name: httpd
     state: latest
 
 
-- name: Enable Services (Httpd, Firewalld)
+- name: Enable Service (Httpd, Firewalld)
   ansible.builtin.systemd:
     name: "{{ item }}"
   with_items:
     - httpd
     - firewalld
 
-- name: Run bash command to copy config files
+- name: kør bash command til kopiering af config filer
   ansible.builtin.command: cp /etc/httpd/conf/httpd.conf /backup/
   become: yes
 
-- name: inserting website index.html file
+- name: insert hjemmeside index.html fil
   ansible.builtin.template:
     src: index.html
     dest: /var/www/html/index.html
@@ -36,7 +36,7 @@
       - Make sure httpd unit is running
 
 
-- name: inserting webserver config file.
+- name: insert hjemmeside config fil.
   ansible.builtin.template:
     src: httpd.conf
     dest: /etc/httpd/conf/httpd.conf
@@ -55,7 +55,7 @@
 #    notify
 #        - Make sure firewalld service is restarted
     
-- name: firewalld rules on relevant ports.
+- name: firewalld regler på relevante service ports.
   ansible.posix.firewalld:
     service: "{{ item }}"
     state: enabled
