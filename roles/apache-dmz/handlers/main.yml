@@ -4,19 +4,19 @@
   ansible.builtin.systemd:
     name: httpd
     state: started
-    enabled: yes
+
 
 - name: Make sure firewalld unit is running
   ansible.builtin.systemd:
     name: firewalld
     state: started
-    enabled: yes
+
 
 - name: Make sure httpd unit is restarted
   ansible.builtin.systemd:
     name: httpd
     state: started
-    enabled: yes
+
 
 - name: Make sure firewalld service is restarted
   ansible.builtin.systemd:
