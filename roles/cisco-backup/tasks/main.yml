@@ -15,20 +15,19 @@
 
 
 
-#  - name: show run 
-#  ios_command:
-#  commands:
-#    - show run 
-#    host: "{{ ansible_host }}"
-#    username: admin
-#    password: Password
-#    register: config
-#
-#  - name: save output to /etc/ansible/backups 
-#  copy: 
-#  content: "{{ config.stdout[0] }}"
-#  dest: "/etc/ansible/show_run_{{ inventory_hostname }}.txt"
+ - name: show run 
+ ios_command:
+ commands:
+   - show run 
+   host: "{{ ansible_host }}"
+   username: admin
+   password: Password
+   register: config
+ - name: save output to /etc/ansible/backups 
+ copy: 
+ content: "{{ config.stdout[0] }}"
+ dest: "/etc/ansible/show_run_{{ inventory_hostname }}.txt"
 
-- name: run show version on remote devices
-  cisco.ios.ios_command:
-    commands: show run  
+#- name: run show version on remote devices
+#  cisco.ios.ios_command:
+#    commands: show run  
