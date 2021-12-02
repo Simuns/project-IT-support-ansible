@@ -16,7 +16,7 @@
 
 
  - name: show run 
- ios_command:
+ cisco.ios.ios_command:
  commands:
    - show run 
    host: "{{ ansible_host }}"
