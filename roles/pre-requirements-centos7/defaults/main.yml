@@ -3,4 +3,5 @@
 #SSH
 PermitRootLogin: no
 AllowUsers: admin
-Interface: eno1
+#Interface: eno1
+Interface: eth0
