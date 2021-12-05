@@ -35,8 +35,8 @@
     src: index.html
     dest: /var/www/html/index.html
     owner: root
-    group: wheel
-    mode: 754
+    group: root
+    mode: '0754'
   notify: 
       - Make sure httpd unit is restarted
 
