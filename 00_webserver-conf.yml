@@ -6,4 +6,4 @@
 
   roles:
      - pre-requirements-centos7 
-     - apache-dmz
+     - apache

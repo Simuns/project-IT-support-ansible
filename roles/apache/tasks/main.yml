@@ -19,10 +19,16 @@
   with_items:
     - httpd
     - firewalld
+  notify:
+     - Make sure httpd unit is running
+     - Make sure firewalld unit is running
+
 
 - name: kør bash command til kopiering af config filer
   ansible.builtin.command: cp /etc/httpd/conf/httpd.conf /backup/
   become: yes
+  notify:
+     - Make sure httpd unit is restarted
 
 - name: insert hjemmeside index.html fil
   ansible.builtin.template:
@@ -31,10 +37,8 @@
     owner: root
     group: wheel
     mode: 754
-  become: yes
   notify: 
-      - Make sure httpd unit is running
-
+      - Make sure httpd unit is restarted
 
 - name: insert hjemmeside config fil.
   ansible.builtin.template:
@@ -44,25 +48,22 @@
     mode: 644
   become: yes
   notify: 
-      - Make sure httpd unit is running
+      - Make sure httpd unit is restarted
 
-#- name: Adding dmz zone and activating
-#  ansible.posix.firewalld:
-#    zone: dmz
-#    interface: eth0
-#    permanent: yes
-#    state: enabled
-#    notify
-#        - Make sure firewalld service is restarted
-    
-- name: firewalld regler på relevante service ports.
-  ansible.posix.firewalld:
-    service: "{{ item }}"
-    state: enabled
-    permanent: true
-  with_items:
-    - http
-    - ssh
+- name: Åben firewalld adgang til tcp port 80 (http)
+  firewalld:
+   port: 80/tcp
+   zone: public
+   state: enabled
+   permanent: yes
   notify:
-      - Make sure firewalld unit is running
-      - Make sure firewalld service is restarted
+    - Make sure firewalld service is restarted
+
+- name: Åben firewalld adgang til tcp port 22 (ssh)
+  firewalld:
+   port: 22/tcp
+   zone: public
+   state: enabled
+   permanent: yes
+  notify:
+    - Make sure firewalld service is restarted

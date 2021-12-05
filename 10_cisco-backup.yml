@@ -1,5 +1,5 @@
 ---
-- hosts: Gr4-2
+- hosts: cisco
   gather_facts: true
   connection: local
 
